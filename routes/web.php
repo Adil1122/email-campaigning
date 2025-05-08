@@ -1,0 +1,15 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecordImportController;
+use App\Http\Controllers\BulkEmailsController;
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/show_import_form', [RecordImportController::class, 'showImportForm']);
+Route::post('/import', [RecordImportController::class, 'import']);
+Route::get('/send_bulk_emails', [BulkEmailsController::class, 'sendBulkEmails']);
+
