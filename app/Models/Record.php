@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Record extends Model
 {
     protected $fillable = [
+        'keyword',
         'business_name',
         'url',
         'phone_number',

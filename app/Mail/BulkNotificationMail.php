@@ -40,8 +40,14 @@ class BulkNotificationMail extends Mailable
      */
     public function content(): Content
     {
+        $view = 'emails.aquila_notification';
+
+        if($this->data['category'] === 'Mutee Art') {
+            $view = 'emails.mutee_art_notification';
+        }
+
         return new Content(
-            view: 'emails.bulk_notification',
+            view: $view,
             with: [
                 'user' => $this->user,
                 'data' => $this->data,

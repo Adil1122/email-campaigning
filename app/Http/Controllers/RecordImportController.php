@@ -35,7 +35,7 @@ class RecordImportController extends Controller
 
         (new FastExcel)->import($filePath, function ($line) {
 
-            $record = Record::where('url', $line['URL'])->first(['id']);
+            $record = Record::where([['url', $line['URL']], ['keyword', $line['Keyword']]])->first(['id']);
 
             if(!$record) {
                 return Record::create([
