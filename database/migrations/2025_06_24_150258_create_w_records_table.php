@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('w_records', function (Blueprint $table) {
+        Schema::create('whatsaapautomations', function (Blueprint $table) {
             $table->id();
             $table->string('keyword')->nullable();
             $table->string('business_name')->nullable();
