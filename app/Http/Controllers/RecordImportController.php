@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
+use App\Models\W_Record;
+use App\Models\Whatsaapautomation;
 use Illuminate\Http\Request;
 use App\Imports\RecordsImport;
 use Rap2hpoutre\FastExcel\FastExcel;
@@ -12,6 +15,8 @@ class RecordImportController extends Controller
 {
     public function showImportForm()
     {
+
+
         return view('records.import');
     }
 
@@ -37,8 +42,8 @@ class RecordImportController extends Controller
 
             $record = Record::where([['url', $line['URL']], ['keyword', $line['Keyword']]])->first(['id']);
 
-            if(!$record) {
-                return Record::create([
+            if (!$record) {
+                Record::create([
 
                     'keyword' => $line['Keyword'],
                     'business_name' => $line['Business Name'],
@@ -50,7 +55,7 @@ class RecordImportController extends Controller
                     'reviews' => $line['Reviews'],
                     'page_number' => $line['Page Number'],
                     'google_map_link' => $line['Google Map Link'],
-    
+
                     'google_email_1' => $line['Google Email 1'],
                     'google_email_2' => $line['Google Email 2'],
                     'google_email_3' => $line['Google Email 3'],
@@ -58,26 +63,40 @@ class RecordImportController extends Controller
                     'google_email_5' => $line['Google Email 5'],
                     'google_email_6' => $line['Google Email 6'],
                     'google_email_7' => $line['Google Email 7'],
-    
+
                     'captcha_free_email_1' => $line['Captcha Free Email 1'],
                     'captcha_free_email_2' => $line['Captcha Free Email 2'],
                     'captcha_free_email_3' => $line['Captcha Free Email 3'],
-    
+
                     'facebook_link' => $line['Facebook Link'],
                     'instagram_link' => $line['Instagram Link'],
                     'twitter_link' => $line['Twitter Link'],
                     'linkedin_link' => $line['LinkedIn Link'],
                     'youtube_link' => $line['YouTube Link'],
                     'contact_us_page' => $line['Contact Us Page']
-    
+
                 ]);
+                Whatsaapautomation::create([
+                    'keyword' => $line['Keyword'],
+                    'business_name' => $line['Business Name'],
+                    'phone_number' => $line['Phone Number'],
+                ]);
+
             }
+
             return null;
-            
+
         });
 
         unlink($filePath);
 
         return redirect()->back()->with('success', 'Users imported successfully.');
     }
+    public function showNumbers()
+    {
+
+        $contacts = Whatsaapautomation::pluck('phone_number');
+        return view('records.showNumber', ['data'=>$contacts]);
+    }
+
 }

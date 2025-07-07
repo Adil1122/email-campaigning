@@ -76,6 +76,8 @@
         <input type="file" name="file" id="file" required>
 
         <button type="submit" class="btn">Import</button>
+        <a href="{{ url('show_numbers') }}" class="btn">Numbers</a>
+
     </form>
 </div>
 

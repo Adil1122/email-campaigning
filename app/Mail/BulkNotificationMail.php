@@ -2,12 +2,14 @@
 
 namespace App\Mail;
 
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+
 
 class BulkNotificationMail extends Mailable
 {
@@ -30,7 +32,9 @@ class BulkNotificationMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $from = new Address($this->data['fromAddress'], $this->data['category']);
         return new Envelope(
+            from: $from,
             subject: $this->data['subject'],
         );
     }
@@ -40,12 +44,13 @@ class BulkNotificationMail extends Mailable
      */
     public function content(): Content
     {
-        $view = 'emails.aquila_notification';
-
-        if($this->data['category'] === 'Mutee Art') {
-            $view = 'emails.mutee_art_notification';
-        }
-
+        $viewMap = [
+            'Aquila Tech' => 'emails.aquila_notification',
+            'Mutee Art' => 'emails.mutee_art_notification',
+            'Synchro Tv' => 'emails.synchro_notification',
+        ];
+        $view = $viewMap[$this->data['category']];
+        
         return new Content(
             view: $view,
             with: [
