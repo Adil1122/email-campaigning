@@ -47,7 +47,7 @@ class BulkNotificationMail extends Mailable
         $viewMap = [
             'Aquila Tech' => 'emails.aquila_notification',
             'Mutee Art' => 'emails.mutee_art_notification',
-            'Synchro Tv' => 'emails.synchro_notification',
+            'Syncro Tv' => 'emails.syncro_notification',
         ];
         $view = $viewMap[$this->data['category']];
         

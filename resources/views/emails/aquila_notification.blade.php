@@ -226,7 +226,7 @@
 <tr>
 <td class="pad" style="padding-bottom:25px;padding-left:10px;padding-right:10px;padding-top:10px;">
 <div style="color:#fff;direction:ltr;font-family:Fira Sans, Lucida Sans Unicode, Lucida Grande, sans-serif;font-size:21px;font-weight:400;letter-spacing:0px;line-height:1.5;text-align:center;mso-line-height-alt:32px;">
-<p style="margin: 0;">Transform your ideas into powerful mobile and web applications tailored to your business needs. We specialize in creating user-friendly, scalable, and innovative apps that deliver exceptional user experiences.</p>
+<p style="margin: 0;">{{ $data['message'] }}</p>
 </div>
 </td>
 </tr>

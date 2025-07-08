@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('w_records', function (Blueprint $table) {
+        Schema::create('whats_app_automations', function (Blueprint $table) {
             $table->id();
             $table->string('keyword')->nullable();
             $table->string('business_name')->nullable();
@@ -24,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('w_records');
+        Schema::dropIfExists('whats_app_automations');
     }
 };

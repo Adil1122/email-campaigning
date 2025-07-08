@@ -19,35 +19,22 @@ class BulkEmailsController extends Controller
         $users = Record::where('keyword', $keyword)->get([
             'business_name',
             'captcha_free_email_1',
-            // 'captcha_free_email_2',
-            // 'captcha_free_email_3'
+            'captcha_free_email_2',
+            'captcha_free_email_3'
         ]);
 
-
-
-        $count = 0;
-
         foreach ($users as $user) {
-            if ($count < 3) {
-                if ($user->captcha_free_email_1 !== '' && $user->captcha_free_email_1 !== 'Error: could not access') {
 
-                    $this->setEmailUserAndSendEmail($user->business_name, $user->captcha_free_email_1, $category);
-
-
-                }
-                $count++;
+            if ($user->captcha_free_email_1 !== '' && $user->captcha_free_email_1 !== 'Error: could not access') {
+                $this->setEmailUserAndSendEmail($user->business_name, $user->captcha_free_email_1, $category);
             }
-
+            if ($user->captcha_free_email_2 !== '' && $user->captcha_free_email_2 !== 'Error: could not access') {
+                $this->setEmailUserAndSendEmail($user->business_name, $user->captcha_free_email_3, $category);
+            }
+            if ($user->captcha_free_email_3 !== '' && $user->captcha_free_email_3 !== 'Error: could not access') {
+                $this->setEmailUserAndSendEmail($user->business_name, $user->captcha_free_email_3, $category);
+            }
         }
-
-        // if ($user->captcha_free_email_2 !== '' && $user->captcha_free_email_2 !== 'Error: could not access') {
-        //     $this->setEmailUserAndSendEmail($user->business_name, $user->captcha_free_email_3, $category);
-        // }
-        // if ($user->captcha_free_email_3 !== '' && $user->captcha_free_email_3 !== 'Error: could not access') {
-        //     $this->setEmailUserAndSendEmail($user->business_name, $user->captcha_free_email_3, $category);
-        // }
-
-
         return "Emails sent successfully.";
 
     }
@@ -60,7 +47,7 @@ class BulkEmailsController extends Controller
             'fromAddress',
             'smtp'
         ]);
-      
+
         if (!$template) {
             throw new \Exception("No template found for category: $category");
         }
@@ -93,15 +80,7 @@ class BulkEmailsController extends Controller
 
         Mail::to($user->email)->send(new BulkNotificationMail($user, $data));
 
-
-        // This line won't be reached due to dd() stopping execution
-
-        // Mail::mailer('smtp')->to($user->email)->send(new BulkNotificationMail($user, $data));
     }
-
-
-
-
 
 
 }

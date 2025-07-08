@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Whatsaapautomation extends Model
+class WhatsAppAutomation extends Model
 {
     //
    

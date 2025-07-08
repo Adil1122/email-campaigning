@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
-use App\Models\W_Record;
-use App\Models\Whatsaapautomation;
+use App\Models\WhatsAppAutomation;
 use Illuminate\Http\Request;
 use App\Imports\RecordsImport;
 use Rap2hpoutre\FastExcel\FastExcel;
@@ -76,7 +74,7 @@ class RecordImportController extends Controller
                     'contact_us_page' => $line['Contact Us Page']
 
                 ]);
-                Whatsaapautomation::create([
+                WhatsAppAutomation::create([
                     'keyword' => $line['Keyword'],
                     'business_name' => $line['Business Name'],
                     'phone_number' => $line['Phone Number'],
@@ -95,8 +93,9 @@ class RecordImportController extends Controller
     public function showNumbers()
     {
 
-        $contacts = Whatsaapautomation::pluck('phone_number');
-        return view('records.showNumber', ['data'=>$contacts]);
+        $contacts = WhatsAppAutomation::pluck('phone_number');
+        return view('records.show_numbers', ['data' => $contacts]);
     }
+
 
 }

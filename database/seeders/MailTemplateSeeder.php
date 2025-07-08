@@ -18,7 +18,7 @@ class MailTemplateSeeder extends Seeder
             [
                 'category' => 'Aquila Tech',
                 'subject' => 'Make Apps for Your Business Growth',
-                'message' => 'Transform your ideas into powerful mobile and web applications tailored to your business needs.',
+                'message' => 'Transform your ideas into powerful mobile and web applications tailored to your business needs. We specialize in creating user-friendly, scalable, and innovative apps that deliver exceptional user experiences.',
                 'html' => null,
                 'smtp' => json_encode([
                     'host' => 'sandbox.smtp.mailtrap.io',
@@ -31,7 +31,7 @@ class MailTemplateSeeder extends Seeder
             [
                 'category' => 'Mutee Art',
                 'subject' => 'Order Creative Islamic Calligraphy Paintings',
-                'message' => 'Bring your walls to life and elevate your interior with our exquisite selection of artwork and decor.',
+                'message' => 'Bring your walls to life and elevate your interior with our exquisite selection of artwork and decor. From traditional masterpieces to contemporary wall sculptures, we have something unique for every art lover.',
                 'html' => null,
                 'smtp' => json_encode([
                     'host' => 'sandbox.smtp.mailtrap.io',
@@ -42,7 +42,7 @@ class MailTemplateSeeder extends Seeder
                 'fromAddress' => 'info@muteeart.com'
             ],
             [
-                'category' => 'Synchro Tv',
+                'category' => 'Syncro Tv',
                 'subject' => 'Efficient and Easy solution to manage screens at your Restuarant',
                 'message' => 'Transform your ideas into powerful mobile and web applications tailored to your business needs.',
                 'html' => null,
@@ -52,7 +52,7 @@ class MailTemplateSeeder extends Seeder
                     'username' => '52e33ef97c1f3b',
                     'password' => '4e9da7fad65f85',
                 ]),
-                'fromAddress' => 'info@synchrotv.com'
+                'fromAddress' => 'info@syncrotv.com'
             ]
         ]);
     }
